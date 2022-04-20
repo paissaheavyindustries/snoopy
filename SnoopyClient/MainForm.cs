@@ -16,7 +16,6 @@ namespace SnoopyClient
     public partial class MainForm : Form
     {
 
-        private UserInterface ui = null;
         private Configuration cfg = null;
         private Engine eng = null;
         private string clientName = "SnoopyClient";

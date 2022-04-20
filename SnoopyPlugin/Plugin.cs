@@ -163,7 +163,6 @@ namespace SnoopyPlugin
             {
                 FileInfo fi = new FileInfo(filename);
                 string origfilename = filename;
-                string cre = "";
                 if (fi.Exists == false)
                 {
                     return new Configuration();

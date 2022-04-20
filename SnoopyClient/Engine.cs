@@ -372,6 +372,11 @@ namespace SnoopyClient
                     remoteSocket = connSocket;
                 }
                 Log(LogEventTypeEnum.Info, "Remote connection established");
+                if (recvStream != "")
+                {
+                    Log(LogEventTypeEnum.Warning, "Discarding " + recvStream.Length + " byte(s) from stream buffer");
+                    recvStream = "";
+                }
                 StatsNetworkState = NetworkStateEnum.Connected;
                 StartReceiving();
                 return;
@@ -467,6 +472,11 @@ namespace SnoopyClient
                     remoteSocket = e.AcceptSocket;
                 }
                 StatsNetworkState = NetworkStateEnum.Connected;
+                if (recvStream != "")
+                {
+                    Log(LogEventTypeEnum.Warning, "Discarding " + recvStream.Length + " byte(s) from stream buffer");
+                    recvStream = "";
+                }
                 StartReceiving();
                 return;
             }
