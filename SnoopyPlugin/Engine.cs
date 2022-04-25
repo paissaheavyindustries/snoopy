@@ -348,8 +348,12 @@ namespace SnoopyPlugin
             }
             lock (sendBuffer)
             {
-                stuff.AddRange(sendBuffer);
-                sendBuffer.Clear();
+                int num = sendBuffer.Count > 1000 ? 1000 : sendBuffer.Count;
+                if (num > 0)
+                {
+                    stuff.AddRange(sendBuffer.Take(num));
+                    sendBuffer.RemoveRange(0, num);
+                }
                 StatsEventsInQueue = 0;
             }
             if (stuff.Count == 0)
